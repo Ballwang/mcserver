@@ -23,6 +23,7 @@ func Usage() {
   fmt.Fprintln(os.Stderr, "\nFunctions:")
   fmt.Fprintln(os.Stderr, "  void SetValue()")
   fmt.Fprintln(os.Stderr, "  i32 add(i32 a, i32 b)")
+  fmt.Fprintln(os.Stderr, "  i32 add100(i32 a, i32 b)")
   fmt.Fprintln(os.Stderr)
   os.Exit(0)
 }
@@ -130,21 +131,43 @@ func main() {
       fmt.Fprintln(os.Stderr, "Add requires 2 args")
       flag.Usage()
     }
-    tmp0, err4 := (strconv.Atoi(flag.Arg(1)))
-    if err4 != nil {
+    tmp0, err6 := (strconv.Atoi(flag.Arg(1)))
+    if err6 != nil {
       Usage()
       return
     }
     argvalue0 := int32(tmp0)
     value0 := argvalue0
-    tmp1, err5 := (strconv.Atoi(flag.Arg(2)))
-    if err5 != nil {
+    tmp1, err7 := (strconv.Atoi(flag.Arg(2)))
+    if err7 != nil {
       Usage()
       return
     }
     argvalue1 := int32(tmp1)
     value1 := argvalue1
     fmt.Print(client.Add(value0, value1))
+    fmt.Print("\n")
+    break
+  case "add100":
+    if flag.NArg() - 1 != 2 {
+      fmt.Fprintln(os.Stderr, "Add100 requires 2 args")
+      flag.Usage()
+    }
+    tmp0, err8 := (strconv.Atoi(flag.Arg(1)))
+    if err8 != nil {
+      Usage()
+      return
+    }
+    argvalue0 := int32(tmp0)
+    value0 := argvalue0
+    tmp1, err9 := (strconv.Atoi(flag.Arg(2)))
+    if err9 != nil {
+      Usage()
+      return
+    }
+    argvalue1 := int32(tmp1)
+    value1 := argvalue1
+    fmt.Print(client.Add100(value0, value1))
     fmt.Print("\n")
     break
   case "":
